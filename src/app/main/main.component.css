@@ -1,0 +1,13 @@
+.main--header {
+  background-color: gray;
+  height: 8%;
+  margin: 0; padding: 0;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+
+.main--body {
+  background-color: azure;
+  height: 88%;
+}
