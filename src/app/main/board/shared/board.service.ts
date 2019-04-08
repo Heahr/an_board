@@ -18,7 +18,7 @@ export class BoardService {
 
   constructor(private http: HttpClient) { }
 
-  addBoard(board: Board): Observable<Board> {
+  createBoard(board: Board): Observable<Board> {
     return this.http.post<Board>(this.boardUrl, board, httpOptions);
   }
 

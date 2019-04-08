@@ -23,10 +23,6 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     return this.boardService.readBoards();
   }
 
-  check() {
-    console.log(this.boards);
-  }
-
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription, index, array) => subscription.unsubscribe());
   }

@@ -1,3 +1,12 @@
-<p>
-  read-board works!
-</p>
+<div *ngIf="board">
+  <h2>{{board?.subject | uppercase}}</h2>
+  <div><span>id: </span>{{board?.id}}</div>
+  <div>
+    <label>subject: {{board?.subject}}</label>
+  </div>
+  <div>
+    <label>message: <br/>{{board?.message}}</label>
+  </div>
+</div>
+<button routerLink="/main/update/{{board.id}}">수정</button>
+<button (click)="goBack()">뒤로가기</button>

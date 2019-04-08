@@ -1,15 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Observable, Subscription} from 'rxjs/index';
+import {Board} from '../shared/board';
+import {BoardService} from '../shared/board.service';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-update-board',
   templateUrl: './update-board.component.html',
   styleUrls: ['./update-board.component.css']
 })
-export class UpdateBoardComponent implements OnInit {
+export class UpdateBoardComponent implements OnInit, OnDestroy {
+  board: Board;
+  private subscriptions: Subscription[] = [];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private boardService: BoardService,
+              private location: Location) { }
 
   ngOnInit() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.subscriptions.push(this.readBoard(id).subscribe(board => this.board = board));
   }
 
+  readBoard(id): Observable<Board> {
+    return this.boardService.readBoard(id);
+  }
+
+  updateBoard(): void {
+    this.subscriptions.push(this.boardService.updateBoard(this.board).subscribe(() => this.goBack()));
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  onSubmit() {
+    this.updateBoard();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription, index, array) => subscription.unsubscribe());
+  }
 }

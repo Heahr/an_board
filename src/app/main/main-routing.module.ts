@@ -8,29 +8,15 @@ import { ReadBoardComponent } from './board/read-board/read-board.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
 
 const routes: Routes = [
+  {path: 'main', component: MainComponent},
   {
-    path: 'main',
+    path: '',
     component: MainComponent,
     children: [
-      { path: ':board', component: BoardMainComponent }
-    ]
-  }, {
-    path: 'main',
-    component: MainComponent,
-    children: [
-      { path: ':create', component: CreateBoardComponent }
-    ]
-  }, {
-    path: 'main',
-    component: MainComponent,
-    children: [
-      { path: ':read', component: ReadBoardComponent }
-    ]
-  }, {
-    path: 'main',
-    component: MainComponent,
-    children: [
-      { path: ':update', component: UpdateBoardComponent }
+      {path: 'main/create', component: CreateBoardComponent},
+      {path: 'main/read/:id', component: ReadBoardComponent},
+      {path: 'main/update/:id', component: UpdateBoardComponent},
+      {path: 'main/board', component: BoardMainComponent}
     ]
   }
 ];

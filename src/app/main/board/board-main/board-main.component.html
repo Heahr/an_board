@@ -1,10 +1,10 @@
 <div>
-  <li *ngFor="let board of boards">
-    <div>
-      <span>{{board.subject}}</span>
-      <hr/>
-      <span>{{board.message}}</span>
+  <li class="board--main--li" *ngFor="let board of boards">
+    <div routerLink="/main/read/{{board.id}}">
+      <span>{{board?.subject}}</span> <br>
+      <span>{{board?.message}}</span>
     </div>
+    <hr/>
   </li>
 </div>
 <div>
