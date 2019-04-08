@@ -1,27 +1,6 @@
-# Board
+# 19/4/8
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+기존에 간단하게 구성하던 게시판 이용해서 다시한번 만들어보고, 차후에 api연동까지 추가.
+현제는 create, update, read구성을 대충 마쳤으며 json-server 를 이용해서 db.json파일에 읽고 쓰는 것 까지 완료함.(나중에 대체)
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+angular material에 오류가 있지만 현제로서 동작은 잘 작동하기 때문에 현상유지하고 진행. (form형태만 잘 안들어갔음)
