@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
-import { BoardComponent } from './board/board.component';
+import { BoardMainComponent } from './board/board-main/board-main.component';
 import { CreateBoardComponent } from './board/create-board/create-board.component';
 import { ReadBoardComponent } from './board/read-board/read-board.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
@@ -11,10 +11,10 @@ import { UpdateBoardComponent } from './board/update-board/update-board.componen
 @NgModule({
   declarations: [
     MainComponent,
-    BoardComponent,
     CreateBoardComponent,
     ReadBoardComponent,
-    UpdateBoardComponent
+    UpdateBoardComponent,
+    BoardMainComponent
   ],
   imports: [
     CommonModule,

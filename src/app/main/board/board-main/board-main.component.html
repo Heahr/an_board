@@ -1,0 +1,13 @@
+<div>
+  <li *ngFor="let board of boards">
+    <div>
+      <span>{{board.subject}}</span>
+      <hr/>
+      <span>{{board.message}}</span>
+    </div>
+  </li>
+</div>
+<div>
+  <button routerLink="/main/create" [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="active">추가</button>
+</div>

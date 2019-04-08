@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MainComponent } from './main.component';
-import { BoardComponent } from './board/board.component';
+import { BoardMainComponent } from './board/board-main/board-main.component';
 import { CreateBoardComponent } from './board/create-board/create-board.component';
 import { ReadBoardComponent } from './board/read-board/read-board.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      { path: ':board', component: BoardComponent }
+      { path: ':board', component: BoardMainComponent }
     ]
   }, {
     path: 'main',
@@ -38,7 +38,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [ RouterModule ]
 })

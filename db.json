@@ -1,0 +1,21 @@
+{
+  "boardList": [
+    {
+      "id": 1,
+      "subject": "json-server",
+      "message": "✧*｡٩(ˊᗜˋ*)و✧*｡"
+    },{
+      "id": 2,
+      "subject": "Python",
+      "message": "typicode"
+    },{
+      "id": 3,
+      "subject": "JS",
+      "message": "typicode"
+    },{
+      "id": 4,
+      "subject": "C언어",
+      "message": "typicode"
+    }
+  ]
+}
