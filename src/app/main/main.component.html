@@ -1,5 +1,11 @@
 <div class="main--header">
   <a routerLink="/main/board">board</a>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="sendLanguage('ko')">한글</button>
+    <button mat-menu-item (click)="sendLanguage('en')">English</button>
+    <button mat-menu-item (click)="sendLanguage('ja')">日本語</button>
+  </mat-menu>
   <a routerLink="/login">Logout</a>
 </div>
 <div class="main--body">

@@ -8,7 +8,6 @@ import { ReadBoardComponent } from './board/read-board/read-board.component';
 import { UpdateBoardComponent } from './board/update-board/update-board.component';
 
 const routes: Routes = [
-  {path: 'main', component: MainComponent},
   {
     path: '',
     component: MainComponent,

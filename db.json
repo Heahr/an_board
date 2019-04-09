@@ -30,5 +30,25 @@
       "message": "fvasdf",
       "id": 6
     }
+  ],
+  "language":[
+    {
+      "id": "ko",
+      "subject": "제목",
+      "date": "날짜",
+      "remarks": "비고"
+    },
+    {
+      "id": "en",
+      "subject": "Subject",
+      "date": "Date",
+      "remarks": "Remarks"
+    },
+    {
+      "id": "ja",
+      "subject": "タイトル",
+      "date": "日付",
+      "remarks": "備考"
+    }
   ]
 }

@@ -17,6 +17,7 @@
 }
 
 .main--body {
+  padding: 10px 15px;
   background-color: gray;
   height: 88%;
   width: 85%;

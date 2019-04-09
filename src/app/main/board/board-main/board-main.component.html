@@ -1,13 +1,25 @@
 <div>
-  <li class="board--main--li" *ngFor="let board of boards">
-    <div routerLink="/main/read/{{board.id}}">
-      <span>{{board?.subject}}</span> <br>
-      <span>{{board?.message}}</span>
-    </div>
-    <hr/>
-  </li>
+  <tr *ngIf="language">
+    <td>No.</td>
+    <td>{{language?.subject}}</td>
+    <td>{{language?.date}}</td>
+    <td>{{language?.remarks}}</td>
+  </tr>
+  <tr *ngFor="let board of boards">
+    <td>{{board?.id}}</td>
+    <td>
+      <div routerLink="/main/read/{{board.id}}">
+        <span>{{board?.subject}}</span> |
+        <span>{{board?.message}}</span>
+      </div>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
 </div>
 <div>
   <button routerLink="/main/create" [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="active">추가</button>
+  <button (click)="check()">확인</button>
 </div>
+<router-outlet></router-outlet>
