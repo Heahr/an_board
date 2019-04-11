@@ -1,27 +1,9 @@
-# Board
+# 19/4/11
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+현재 기본적인 틀, angular material 적용완료.
+나머지 css나 다른 것들은 차차 적용할것.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+해결해야할것.)
+데이터 callback이 정확하게 수행되지 않음.
+-> 현제는 login에서넘어온 정보와 현재위치를 찾아 가져오는 nation이 settimeout으로 강제적으로 적용되어있어 잘 작동하지만 데이터를 받은 이후 처리해주고 싶기때문에 그것에 대해서 현제 찾아보는중.
+router에서 처리하는게 아닌가 싶긴 한데, 정확한 용어같은것들이 아직도 명확하게 떠오르지 않음.
