@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { StateComponent } from './state/state.component';
+import {StateComponent} from './state/state.component';
 import {BoardMainComponent} from './board-main/board-main.component';
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
-export class BoardRoutingModule { }
+export class BoardRoutingModule {
+}

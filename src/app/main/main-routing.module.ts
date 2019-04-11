@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { MainComponent } from './main.component';
-import { BoardMainComponent } from './board/board-main/board-main.component';
-import { CreateBoardComponent } from './board/create-board/create-board.component';
-import { ReadBoardComponent } from './board/read-board/read-board.component';
-import { UpdateBoardComponent } from './board/update-board/update-board.component';
+import {MainHomeComponent} from './home/main-home.component';
+import {BoardMainComponent} from './board/board-main/board-main.component';
+import {CreateBoardComponent} from './board/create-board/create-board.component';
+import {ReadBoardComponent} from './board/read-board/read-board.component';
+import {UpdateBoardComponent} from './board/update-board/update-board.component';
 
 const routes: Routes = [
+  {path: 'main', redirectTo: 'main/board', pathMatch: 'full'},
   {
-    path: '',
-    component: MainComponent,
+    path: 'main',
+    component: MainHomeComponent,
     children: [
-      {path: 'main/create', component: CreateBoardComponent},
-      {path: 'main/read/:id', component: ReadBoardComponent},
-      {path: 'main/update/:id', component: UpdateBoardComponent},
-      {path: 'main/board', component: BoardMainComponent}
+      {path: 'create', component: CreateBoardComponent},
+      {path: 'read/:id', component: ReadBoardComponent},
+      {path: 'update/:id', component: UpdateBoardComponent},
+      {path: 'board', component: BoardMainComponent}
     ]
   }
 ];
@@ -25,6 +26,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {
+}

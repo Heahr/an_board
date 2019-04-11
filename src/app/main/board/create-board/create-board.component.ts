@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Board} from '../shared/board';
-import {Subscription} from 'rxjs/index';
-import {BoardService} from '../shared/board.service';
 import {Location} from '@angular/common';
+import {Subscription} from 'rxjs/index';
+
+import {Board} from '../shared/board';
+import {BoardService} from '../shared/board.service';
 
 @Component({
   selector: 'app-create-board',

@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BoardRoutingModule } from './board-routing.module';
-import { StateComponent } from './state/state.component';
+import {BoardRoutingModule} from './board-routing.module';
+import {StateComponent} from './state/state.component';
 
 @NgModule({
   declarations: [
@@ -13,4 +13,5 @@ import { StateComponent } from './state/state.component';
     BoardRoutingModule
   ]
 })
-export class BoardModule { }
+export class BoardModule {
+}

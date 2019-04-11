@@ -15,7 +15,7 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   boards: Board[];
 
-  language: Language;
+  language: Language = {} as Language;
   languages: Language[];
 
 
@@ -40,10 +40,6 @@ export class BoardMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription, index, array) => subscription.unsubscribe());
-  }
-
-  check() {
-    console.log(this.language);
   }
 }
 

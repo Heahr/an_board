@@ -1,11 +1,14 @@
 <div>
   <form class="example-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <label>subject: <br/><input [(ngModel)]="board.subject" name="subject" #subject="ngModel" minlength="3" required /></label><br/>
+    <label>subject: <br/><input [(ngModel)]="board.subject" name="subject" #subject="ngModel" minlength="3"
+                                required/></label><br/>
     <label>message: </label><br/>
     <mat-form-field class="example-full-width">
-      <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5" required></textarea>
-    </mat-form-field><br/>
-    <button> 추가 </button>
-    <button (click)="goBack()">뒤로가기</button>
+      <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5"
+                required></textarea>
+    </mat-form-field>
+    <br/>
+    <button mat-button> 추가</button>
+    <button (click)="goBack()" mat-button>뒤로가기</button>
   </form>
 </div>

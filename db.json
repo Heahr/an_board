@@ -18,20 +18,15 @@
     {
       "id": 4,
       "subject": "C언어",
-      "message": "typicode"
+      "message": "typicodesadf"
     },
     {
       "subject": "asasdasd",
       "message": "asdadsasd",
       "id": 5
-    },
-    {
-      "subject": "asd",
-      "message": "fvasdf",
-      "id": 6
     }
   ],
-  "language":[
+  "language": [
     {
       "id": "ko",
       "subject": "제목",

@@ -8,5 +8,6 @@
     <label>message: <br/>{{board?.message}}</label>
   </div>
 </div>
-<button routerLink="/main/update/{{board.id}}">수정</button>
-<button (click)="goBack()">뒤로가기</button>
+<button mat-button routerLink="/main/update/{{board?.id}}">수정</button>
+<button mat-button (click)="deleteBoard(board)">삭제</button>
+<button mat-button (click)="goBack()">뒤로가기</button>

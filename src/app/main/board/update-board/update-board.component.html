@@ -3,15 +3,18 @@
   <div><span>id: </span>{{board?.id}}</div>
   <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div>
-      <label>subject: <input [(ngModel)]="board.subject" name="board.subject" placeholder="subject" #board.subject="ngModel" minlength="3" required/> </label>
+      <label>subject: <input [(ngModel)]="board.subject" name="board.subject" placeholder="subject"
+                             #board.subject="ngModel" minlength="3" required/> </label>
     </div>
     <div>
       <label>message: </label><br/>
       <mat-form-field class="example-full-width">
-        <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5" required></textarea>
-      </mat-form-field><br/>
+        <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5"
+                  required></textarea>
+      </mat-form-field>
+      <br/>
     </div>
-    <button>저장</button>
-    <button routerLink="/board">뒤로가기</button>
+    <button mat-button>저장</button>
+    <button routerLink="/main/board" mat-button>뒤로가기</button>
   </form>
 </div>

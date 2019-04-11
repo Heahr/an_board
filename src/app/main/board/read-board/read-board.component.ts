@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Board} from '../shared/board';
-import {Observable, Subscription} from 'rxjs/index';
 import {ActivatedRoute} from '@angular/router';
-import {BoardService} from '../shared/board.service';
 import {Location} from '@angular/common';
+import {Observable, Subscription} from 'rxjs/index';
+
+import {Board} from '../shared/board';
+import {BoardService} from '../shared/board.service';
 
 @Component({
   selector: 'app-read-board',
@@ -16,8 +17,8 @@ export class ReadBoardComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private boardService: BoardService,
-              private location: Location
-  ) { }
+              private location: Location) {
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -26,6 +27,10 @@ export class ReadBoardComponent implements OnInit, OnDestroy {
 
   readBoard(id): Observable<Board> {
     return this.boardService.readBoard(id);
+  }
+
+  deleteBoard(board: Board): void {
+    this.subscriptions.push(this.boardService.deleteBoard(board).subscribe(() => this.goBack()));
   }
 
   goBack(): void {

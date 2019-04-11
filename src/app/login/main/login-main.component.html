@@ -1,0 +1,6 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Login" #loginInput value="">
+  </mat-form-field>
+  <button routerLink="/main/board" type="button" (click)="setLoginid(loginInput.value)">login</button>
+</form>

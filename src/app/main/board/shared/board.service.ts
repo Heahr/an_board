@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
-import { Board } from './board';
+import {Board} from './board';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,7 +15,8 @@ const httpOptions = {
 export class BoardService {
   private boardUrl = 'http://localhost:3000/boardList';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   createBoard(board: Board): Observable<Board> {
     return this.http.post<Board>(this.boardUrl, board, httpOptions);

@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subscription} from 'rxjs/index';
-import {Board} from '../shared/board';
-import {BoardService} from '../shared/board.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
+import {Observable, Subscription} from 'rxjs/index';
+
+import {Board} from '../shared/board';
+import {BoardService} from '../shared/board.service';
 
 @Component({
   selector: 'app-update-board',
@@ -16,7 +17,8 @@ export class UpdateBoardComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private boardService: BoardService,
-              private location: Location) { }
+              private location: Location) {
+  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
