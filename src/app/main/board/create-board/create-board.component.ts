@@ -22,6 +22,7 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
   }
 
   createBoard(): void {
+    this.board.date = Date.now();
     this.subscriptions.push(this.boardService.createBoard(this.board).subscribe(() => this.goBack()));
   }
 

@@ -3,12 +3,12 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule,
+  MatButtonModule, MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule,
-  MatRippleModule
+  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatRippleModule, MatSortModule, MatTabGroup, MatTableModule, MatTabsModule
 } from '@angular/material';
 
 import {MainHomeComponent} from './home/main-home.component';
@@ -39,7 +39,13 @@ import {BoardModule} from './board/board.module';
     BrowserAnimationsModule,
     MatIconModule,
     MatRippleModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSortModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatTabsModule,
   ],
   exports: [
     MatButtonModule,

@@ -7,6 +7,9 @@
   <div>
     <label>message: <br/>{{board?.message}}</label>
   </div>
+  <div>
+    Date: {{board?.date | date:'yyyy-MM-dd HH-mm:ss'}}
+  </div>
 </div>
 <button mat-button routerLink="/main/update/{{board?.id}}">수정</button>
 <button mat-button (click)="deleteBoard(board)">삭제</button>
