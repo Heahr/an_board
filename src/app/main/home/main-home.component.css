@@ -1,11 +1,12 @@
 .main--header {
   background-color: gray;
-  height: 8%;
+  height: 5%;
   margin: 0; padding: 0px;
   list-style: none;
   position: relative;
   width: 100%;
   margin-bottom: 20px;
+  padding-top: 7px;
 }
 
 .main--header a {
@@ -18,7 +19,6 @@
 
 .main--body {
   padding: 10px 15px;
-  background-color: gray;
   height: 88%;
   width: 85%;
   margin: 0 auto;

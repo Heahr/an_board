@@ -1,14 +1,17 @@
-<div>
+<div class="board--create">
   <form class="example-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <label>subject: <br/><input [(ngModel)]="board.subject" name="subject" #subject="ngModel" minlength="3"
-                                required/></label><br/>
-    <label>message: </label><br/>
     <mat-form-field class="example-full-width">
-      <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5"
+      <input matInput placeholder="Subject" class="create--input" [(ngModel)]="board.subject" name="subject" #subject="ngModel" minlength="3" required/>
+      <br/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Content" class="create--input" [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5" rows="10"
                 required></textarea>
     </mat-form-field>
     <br/>
-    <button mat-button> 추가</button>
-    <button (click)="goBack()" mat-button>뒤로가기</button>
-  </form>
+    <div class="board--create--button--group">
+      <button (click)="goBack()" mat-raised-button class="board--create--button">뒤로가기</button>
+      <button mat-raised-button class="board--create--button">추가</button>
+    </div>
+    </form>
 </div>

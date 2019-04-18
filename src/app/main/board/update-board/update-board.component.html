@@ -1,20 +1,22 @@
-<div *ngIf="board">
+<div *ngIf="board" class="board--update">
   <h2>{{board?.subject | uppercase}} Edit</h2>
-  <div><span>id: </span>{{board?.id}}</div>
   <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <div>
-      <label>subject: <input [(ngModel)]="board.subject" name="board.subject" placeholder="subject"
-                             #board.subject="ngModel" minlength="3" required/> </label>
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="board.subject" placeholder="Subject" class="create--input" name="board.subject" placeholder="subject"
+               #board.subject="ngModel" minlength="3" required/>
+      </mat-form-field>
     </div>
     <div>
-      <label>message: </label><br/>
       <mat-form-field class="example-full-width">
-        <textarea matInput [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5"
+        <textarea matInput [(ngModel)]="board.message" placeholder="Content" class="create--input" name="message" #message="ngModel" minlength="5" rows="10"
                   required></textarea>
       </mat-form-field>
       <br/>
     </div>
-    <button mat-button>저장</button>
-    <button routerLink="/main/board" mat-button>뒤로가기</button>
+    <div class="board--update--button--group">
+      <button routerLink="/main/board" mat-raised-button class="board--update--button">뒤로가기</button>
+      <button mat-raised-button class="board--update--button">저장</button>
+    </div>
   </form>
 </div>

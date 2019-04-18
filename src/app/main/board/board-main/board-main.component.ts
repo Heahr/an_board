@@ -48,18 +48,20 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   }
 
   deleteBoard(board: Board): void {
-    console.log(board);
     this.subscriptions.push(this.boardService.deleteBoard(board).subscribe());
+    this.readBoards();
     this.subscriptions.push(this.readBoards().subscribe(boards => {this.boards = boards; this.setPage(1); }));
   }
 
-  openDialog(): void {
+  openDialog(board: Board): void {
     const dialogRef = this.dialog.open(DeleteBoardComponent, {
       width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(result === true) {
+        this.deleteBoard(board);
+      }
     });
   }
 

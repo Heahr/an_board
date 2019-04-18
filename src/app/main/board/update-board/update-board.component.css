@@ -1,0 +1,22 @@
+.board--update {
+  width: 80%;
+  margin: auto;
+}
+
+.create--input {
+  background-color: white;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.board--update--button--group {
+  float: right;
+  padding-right: 15px;
+}
+
+.board--update--button {
+  margin: 0 1px;
+}

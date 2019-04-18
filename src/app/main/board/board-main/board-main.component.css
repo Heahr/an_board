@@ -6,15 +6,35 @@ table {
   width: 100%;
 }
 
+.mat-elevation-z8 {
+  margin-top: 3px;
+}
+
 .fab {
   background-color: white;
   color: black;
 }
 
-.table--ul {
+.board--table {
+  text-align: center;
+}
+
+.board--table--ul {
   padding-bottom: 15px;
 }
 
-.table--ul li{
+.board--table--ul li{
   display: inline;
+}
+
+.page--number {
+  padding: 0 10px;
+}
+
+.page--number--element {
+  padding: 0 1px;
+}
+
+.page--navigate {
+  padding: 0 1px;
 }

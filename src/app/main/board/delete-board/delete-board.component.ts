@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-delete-board',
@@ -8,8 +8,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class DeleteBoardComponent implements OnInit {
 
-  constructor(
-    public dialogRef: MatDialogRef<DeleteBoardComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DeleteBoardComponent>) {
+  }
 
   ngOnInit() {
   }

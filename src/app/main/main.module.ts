@@ -16,6 +16,7 @@ import {BoardMainComponent} from './board/board-main/board-main.component';
 import {CreateBoardComponent} from './board/create-board/create-board.component';
 import {ReadBoardComponent} from './board/read-board/read-board.component';
 import {UpdateBoardComponent} from './board/update-board/update-board.component';
+import {DeleteBoardComponent} from './board/delete-board/delete-board.component';
 
 import {MainRoutingModule} from './main-routing.module';
 import {BoardModule} from './board/board.module';
@@ -27,6 +28,7 @@ import {BoardModule} from './board/board.module';
     ReadBoardComponent,
     UpdateBoardComponent,
     BoardMainComponent,
+    DeleteBoardComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,9 @@ import {BoardModule} from './board/board.module';
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
+  ],
+  entryComponents: [
+    DeleteBoardComponent
   ]
 })
 export class MainModule {
