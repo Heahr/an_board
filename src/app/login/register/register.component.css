@@ -2,3 +2,7 @@
   max-width: 190px;
   margin: 0 auto;
 }
+
+.register--language--button {
+  text-align: right;
+}

@@ -30,6 +30,7 @@ export class UpdateBoardComponent implements OnInit, OnDestroy {
   }
 
   updateBoard(): void {
+    this.board.date = Date.now();
     this.subscriptions.push(this.boardService.updateBoard(this.board).subscribe(() => this.goBack()));
   }
 

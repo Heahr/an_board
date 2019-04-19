@@ -3,7 +3,7 @@
     <!--<td>{{language?.date}}</td>-->
     <!--<td>{{language?.remarks}}</td>-->
 <!--</tr>-->
-<div>
+<div class="board--main--button--group">
   <button mat-raised-button routerLink="/main/create" [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="active" mat-button>추가</button>
 </div>
@@ -39,28 +39,28 @@
   </table>
   <div class="board--table">
     <ul class="board--table--ul" *ngIf="pager.pages && pager.pages.length">
-      <li [ngClass]="{disabled:pager.currentPage === 1}" class="page--navigate">
-        <button mat-raised-button (click)="setPage(1)">
+      <li class="page--navigate">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(1)">
           <mat-icon>first_page</mat-icon>
         </button>
       </li>
-      <li [ngClass]="{disabled:pager.currentPage === 1}" class="page--navigate">
-        <button mat-raised-button (click)="setPage(pager.currentPage - 1)">
+      <li class="page--navigate">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(pager.currentPage - 1)">
           <mat-icon>navigate_before</mat-icon>
         </button>
       </li>
       <span class="page--number">
-        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="page--number--element">
-          <button class="fab" mat-mini-fab (click)="setPage(page)">{{page}}</button>
+        <li *ngFor="let page of pager.pages" class="page--number--element">
+          <button class="fab" mat-mini-fab [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</button>
         </li>
       </span>
-      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page--navigate">
-        <button mat-raised-button (click)="setPage(pager.currentPage + 1)">
+      <li class="page--navigate">
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.currentPage + 1)">
           <mat-icon>navigate_next</mat-icon>
         </button>
       </li>
-      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page--navigate">
-        <button mat-raised-button (click)="setPage(pager.totalPages)">
+      <li class="page--navigate">
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.totalPages)">
           <mat-icon>last_page</mat-icon>
         </button>
       </li>

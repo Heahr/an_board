@@ -2,3 +2,7 @@
   max-width: 190px;
   margin: auto;
 }
+
+.login--language--button {
+  text-align: right;
+}

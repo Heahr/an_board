@@ -3,6 +3,13 @@
     <mat-card-header>
       <mat-card-title> Log  in </mat-card-title>
     </mat-card-header>
+    <div class="login--language--button">
+      <button mat-raised-button [matMenuTriggerFor]="menu">Language</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item >한글</button>
+        <button mat-menu-item >English</button>
+      </mat-menu>
+    </div>
     <mat-card-content>
       <form class="example-form">
         <mat-form-field class="example-full-width">

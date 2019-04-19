@@ -17,6 +17,7 @@ import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   boards: Board[];
+  currentPage: number = 1;
 
   displayedColumns: string[] = ['id', 'subject', 'date', 'delete'];
   language: Language = {} as Language;
@@ -36,7 +37,11 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     this.getLanguagelist();
     this.subscriptions.push(this.mainService.getLanguage().subscribe(
       language => this.language = this.languages.find((value) => value.id === language)));
-    this.subscriptions.push(this.readBoards().subscribe(boards => {this.boards = boards; this.setPage(1); }));
+    this.subscriptions.push(this.readBoards()
+      .subscribe(boards => {
+        this.boards = boards.sort((a, b) => b.date - a.date);
+        this.setPage(this.currentPage);
+      }));
   }
 
   getLanguagelist(): void {
@@ -47,10 +52,13 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     return this.boardService.readBoards();
   }
 
-  deleteBoard(board: Board): void {
-    this.subscriptions.push(this.boardService.deleteBoard(board).subscribe());
-    this.readBoards();
-    this.subscriptions.push(this.readBoards().subscribe(boards => {this.boards = boards; this.setPage(1); }));
+  deleteBoard(board: Board): any {
+    return this.subscriptions.push(this.boardService.deleteBoard(board).subscribe(() => {
+      this.readBoards().subscribe(boards => {
+        this.boards = boards.sort((a, b) => b.date - a.date);
+        this.setPage(this.currentPage);
+      });
+    }));
   }
 
   openDialog(board: Board): void {
@@ -59,13 +67,14 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result === true) {
+      if (result === true) {
         this.deleteBoard(board);
       }
     });
   }
 
   setPage(page: number) {
+    this.currentPage = page;
     this.pager = this.pagerService.getPager(this.boards.length, page);
     this.pagedItems = this.boards.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }

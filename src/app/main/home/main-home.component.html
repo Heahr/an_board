@@ -1,14 +1,19 @@
 <div class="main--header">
-  <a routerLink="/main/board">board</a>
-  <button mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="sendLanguage('ko')">한글</button>
-    <button mat-menu-item (click)="sendLanguage('en')">English</button>
-    <button mat-menu-item (click)="sendLanguage('ja')">日本語</button>
-  </mat-menu>
-  <span *ngIf="id">Hi :) {{id}} </span>
-  <a routerLink="/login">Logout</a>
+  <div class="main--header--left">
+    <button mat-button routerLink="/main/board">board</button>
+    <button mat-raised-button class="main--header--left--button" [matMenuTriggerFor]="menu">Language</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sendLanguage('ko')">한글</button>
+      <button mat-menu-item (click)="sendLanguage('en')">English</button>
+      <button mat-menu-item (click)="sendLanguage('ja')">日本語</button>
+    </mat-menu>
+  </div>
+  <div class="main--header--right">
+    <span *ngIf="id">Hi :) {{id}} </span>
+    <button mat-button routerLink="/login" class="main--header--logout">Logout</button>
+  </div>
 </div>
+<mat-divider></mat-divider>
 <div class="main--body">
   <router-outlet></router-outlet>
 </div>

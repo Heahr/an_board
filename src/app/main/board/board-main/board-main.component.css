@@ -1,3 +1,7 @@
+.board--main--button--group {
+  text-align: right;
+}
+
 .board--main--li {
   list-style: none
 }
@@ -33,6 +37,15 @@ table {
 
 .page--number--element {
   padding: 0 1px;
+}
+
+.active {
+  background-color: black;
+  color: white;
+}
+
+.disabled {
+  cursor: not-allowed;
 }
 
 .page--navigate {

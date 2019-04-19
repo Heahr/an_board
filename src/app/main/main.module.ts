@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatDialogModule,
+  MatButtonModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -48,6 +48,7 @@ import {BoardModule} from './board/board.module';
     MatPaginatorModule,
     MatDialogModule,
     MatTabsModule,
+    MatDividerModule,
   ],
   exports: [
     MatButtonModule,
