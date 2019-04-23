@@ -29,7 +29,7 @@
 }
 
 .main--header--right {
-  padding-right: 140px;
+  padding-right: 40px;
 }
 
 .main--header--logout {
@@ -37,9 +37,8 @@
 }
 
 .main--body {
-  padding: 10px 15px;
+  padding-top: 15px;
+  margin-right: 100px;
   height: 88%;
-  width: 85%;
-  margin: 0 auto;
-  overflow: scroll;
+  width: 100%;
 }

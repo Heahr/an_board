@@ -1,8 +1,29 @@
 .example--card {
-  max-width: 190px;
+  height: 400px;
+  width: 300px;
   margin: 0 auto;
+  text-align: center;
+}
+
+.register--main--title{
+  vertical-align:middle;
+  display: inline-block;
+  margin: auto;
 }
 
 .register--language--button {
   text-align: right;
+  margin-top: 20px;
 }
+
+.register--main--input{
+  margin-top: 70px;
+}
+
+.register--main--button{
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  margin: auto;
+}
+

@@ -5,12 +5,16 @@
       <mat-form-field class="example-full-width">
         <input matInput [(ngModel)]="board.subject" placeholder="Subject" class="create--input" name="board.subject" placeholder="subject"
                #board.subject="ngModel" minlength="3" required/>
+        <mat-hint>제목을 입력하세요.</mat-hint>
+        <mat-error>3글자 이상 입력하세요.</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="example-full-width">
         <textarea matInput [(ngModel)]="board.message" placeholder="Content" class="create--input" name="message" #message="ngModel" minlength="5" rows="10"
                   required></textarea>
+        <mat-hint>내용을 입력하세요.</mat-hint>
+        <mat-error>5글자 이상 입력하세요.</mat-error>
       </mat-form-field>
       <br/>
     </div>

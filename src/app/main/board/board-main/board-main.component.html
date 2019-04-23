@@ -1,73 +1,78 @@
-<!--<td>No.</td>-->
-    <!--<td>{{language?.subject}}</td>-->
-    <!--<td>{{language?.date}}</td>-->
-    <!--<td>{{language?.remarks}}</td>-->
-<!--</tr>-->
 <div class="board--main--button--group">
   <button mat-raised-button routerLink="/main/create" [routerLinkActiveOptions]="{ exact: true }"
           routerLinkActive="active" mat-button>추가</button>
 </div>
+<div class="board--main">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="pagedItems">
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="pagedItems">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef> Subject </th>
+        <td mat-cell class="pointer" *matCellDef="let element" routerLink="/main/update/{{element.id}}"> {{element.subject}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="subject">
-      <th mat-header-cell *matHeaderCellDef> Subject </th>
-      <td mat-cell *matCellDef="let element" routerLink="/main/update/{{element.id}}"> {{element.subject}} </td>
-    </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date |  date:'yyyy-MM-dd HH-mm:ss'}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.date |  date:'yyyy-MM-dd HH-mm:ss'}} </td>
-    </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="openDialog(element)">Delete</button>
+        </td>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-raised-button (click)="openDialog(element)">Delete</button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <div class="board--table">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <div class="board--table--footer">
     <ul class="board--table--ul" *ngIf="pager.pages && pager.pages.length">
       <li class="page--navigate">
-        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(1)">
+        <mat-form-field class="page--navigate--select">
+          <mat-label>slice</mat-label>
+          <mat-select matNativeControl required>
+            <mat-option value="5" (click)="setPage(1, 5)">5</mat-option>
+            <mat-option value="10" (click)="setPage(1, 10)">10</mat-option>
+            <mat-option value="20" (click)="setPage(1, 20)">20</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+      <li class="page--navigate--size">
+        {{this.pager.startIndex + 1}}-{{this.pager.endIndex + 1}}
+      </li>
+      <li class="page--navigate">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(1, this.pageslice)">
           <mat-icon>first_page</mat-icon>
         </button>
       </li>
       <li class="page--navigate">
-        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(pager.currentPage - 1)">
+        <button [ngClass]="{disabled:pager.currentPage === 1}" mat-raised-button (click)="setPage(pager.currentPage - 1, this.pageslice)">
           <mat-icon>navigate_before</mat-icon>
         </button>
       </li>
       <span class="page--number">
         <li *ngFor="let page of pager.pages" class="page--number--element">
-          <button class="fab" mat-mini-fab [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</button>
+          <button class="fab" mat-mini-fab [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page, this.pageslice)">{{page}}</button>
         </li>
       </span>
       <li class="page--navigate">
-        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.currentPage + 1)">
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.currentPage + 1,  this.pageslice)">
           <mat-icon>navigate_next</mat-icon>
         </button>
       </li>
       <li class="page--navigate">
-        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.totalPages)">
+        <button [ngClass]="{disabled:pager.currentPage === pager.totalPages}" mat-raised-button (click)="setPage(pager.totalPages, this.pageslice)">
           <mat-icon>last_page</mat-icon>
         </button>
       </li>
     </ul>
   </div>
 </div>
-
-
-
-<router-outlet></router-outlet>

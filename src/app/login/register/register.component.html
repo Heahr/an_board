@@ -1,32 +1,46 @@
 <mat-card class="example--card">
-  <mat-card-header>
-    <mat-card-title> Sign Up </mat-card-title>
-  </mat-card-header>
+  <div class="register--main--title">
+    <mat-card-header>
+      <mat-card-title> Sign Up</mat-card-title>
+    </mat-card-header>
+  </div>
   <div class="register--language--button">
-    <button mat-raised-button [matMenuTriggerFor]="menu" >Language</button>
+    <button mat-raised-button [matMenuTriggerFor]="menu">Language▼</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item >한글</button>
-      <button mat-menu-item >English</button>
+      <button mat-menu-item>한글</button>
+      <button mat-menu-item>English</button>
     </mat-menu>
   </div>
-  <mat-card-content>
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Login" #loginid value="">
-      </mat-form-field>
-      <br/>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" #loginpassword value="">
-      </mat-form-field>
-      <br/>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password Confirm" #loginpasswordconfirm value="">
-      </mat-form-field>
-      <br/>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button routerLink="/login">Cancel</button>
-    <button mat-button routerLink="/login">Save</button>
-  </mat-card-actions>
+  <div class="register--main--input">
+    <mat-card-content>
+      <form class="example-form" [formGroup]="userForm">
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput placeholder="Login" formControlName="username">
+          <mat-hint>3글자 이상 입력하세요.</mat-hint>
+          <mat-error>정확하게 입력하세요.</mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-hint>패스워드를 입력하세요.</mat-hint>
+          <mat-error>정확하게 입력하세요.</mat-error>
+
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password Confirm" type="password" formControlName="verifyPassword"
+                 [errorStateMatcher]="errorMatcher">
+          <mat-hint>한번 더 입력하세요.</mat-hint>
+          <mat-error *ngIf="userForm.hasError('passwordsDoNotMatch')">똑같지 않습니다.</mat-error>
+        </mat-form-field>
+        <br/>
+      </form>
+    </mat-card-content>
+  </div>
+  <div class="register--main--button">
+    <mat-card-actions>
+      <button mat-button routerLink="/login">Cancel</button>
+      <button mat-button routerLink="/login">Save</button>
+    </mat-card-actions>
+  </div>
 </mat-card>

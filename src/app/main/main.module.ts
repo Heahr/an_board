@@ -8,7 +8,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatRippleModule, MatSortModule, MatTabGroup, MatTableModule, MatTabsModule
+  MatRippleModule, MatSelectModule, MatSortModule, MatTabGroup, MatTableModule, MatTabsModule
 } from '@angular/material';
 
 import {MainHomeComponent} from './home/main-home.component';
@@ -49,6 +49,7 @@ import {BoardModule} from './board/board.module';
     MatDialogModule,
     MatTabsModule,
     MatDividerModule,
+    MatSelectModule,
   ],
   exports: [
     MatButtonModule,

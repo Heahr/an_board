@@ -1,31 +1,40 @@
-<mat-card class="card">
-  <div class="example--card">
-    <mat-card-header>
-      <mat-card-title> Log  in </mat-card-title>
-    </mat-card-header>
-    <div class="login--language--button">
-      <button mat-raised-button [matMenuTriggerFor]="menu">Language</button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item >한글</button>
-        <button mat-menu-item >English</button>
-      </mat-menu>
+<div class="login--main">
+  <mat-card class="card">
+    <div class="example--card">
+      <div class="login--main---title">
+        <mat-card-header>
+          <mat-card-title> Log  in </mat-card-title>
+        </mat-card-header>
+      </div>
+      <div class="login--language--button">
+        <button mat-raised-button [matMenuTriggerFor]="menu">Language▼</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item >한글</button>
+          <button mat-menu-item >English</button>
+        </mat-menu>
+      </div>
+      <mat-card-content>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Login" #loginid value="">
+            <mat-hint>아이디 입력하세요.</mat-hint>
+            <mat-error>정확하게 입력하세요.</mat-error>
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" #loginpassword value="">
+            <mat-hint>비밀번호를 입력하세요.</mat-hint>
+            <mat-error>정확하게 입력하세요.</mat-error>
+          </mat-form-field>
+          <br/>
+        </form>
+      </mat-card-content>
+      <div class="login--main--button">
+        <mat-card-actions>
+          <button mat-raised-button routerLink="/register">Sign Up</button>
+          <button mat-raised-button routerLink="/main/board" (click)="setLoginid(loginid.value)">Login</button>
+        </mat-card-actions>
+      </div>
     </div>
-    <mat-card-content>
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Login" #loginid value="">
-        </mat-form-field>
-        <br/>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password" #loginpassword value="">
-        </mat-form-field>
-        <br/>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button routerLink="/register">Sign Up</button>
-      <button mat-raised-button routerLink="/main/board" (click)="setLoginid(loginid.value)">Login</button>
-    </mat-card-actions>
-  </div>
-</mat-card>
-
+  </mat-card>
+</div>

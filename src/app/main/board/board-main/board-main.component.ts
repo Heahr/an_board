@@ -17,12 +17,13 @@ import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   boards: Board[];
-  currentPage: number = 1;
+  currentPage = 1;
 
   displayedColumns: string[] = ['id', 'subject', 'date', 'delete'];
   language: Language = {} as Language;
   languages: Language[];
 
+  pageslice = 10;
   pager: any = {};
   pagedItems: Board[];
 
@@ -73,9 +74,10 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     });
   }
 
-  setPage(page: number) {
+  setPage(page: number, slice: number = 10) {
+    this.pageslice = slice;
     this.currentPage = page;
-    this.pager = this.pagerService.getPager(this.boards.length, page);
+    this.pager = this.pagerService.getPager(this.boards.length, page, slice);
     this.pagedItems = this.boards.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 

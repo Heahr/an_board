@@ -5,6 +5,7 @@ import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatM
 import {LoginRoutingModule} from './login-routing.module';
 import {LoginMainComponent} from './main/login-main.component';
 import {RegisterComponent} from './register/register.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import {RegisterComponent} from './register/register.component';
     MatInputModule,
     MatCardModule,
     MatMenuModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatFormFieldModule,
