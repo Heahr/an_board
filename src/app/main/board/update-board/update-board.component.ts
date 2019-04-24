@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 import {Observable, Subscription} from 'rxjs/index';
 
 import {Board} from '../shared/board';
+import {Updateboard} from '../shared/updateboard';
 import {BoardService} from '../shared/board.service';
 
 @Component({
@@ -12,7 +13,7 @@ import {BoardService} from '../shared/board.service';
   styleUrls: ['./update-board.component.css']
 })
 export class UpdateBoardComponent implements OnInit, OnDestroy {
-  board: Board;
+  board: any;
   private subscriptions: Subscription[] = [];
 
   constructor(private route: ActivatedRoute,
@@ -20,9 +21,12 @@ export class UpdateBoardComponent implements OnInit, OnDestroy {
               private location: Location) {
   }
 
+  id: number;
+  changeBoard: Updateboard = {} as Updateboard;
+
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.subscriptions.push(this.readBoard(id).subscribe(board => this.board = board));
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.subscriptions.push(this.readBoard(this.id).subscribe(board => this.board = board));
   }
 
   readBoard(id): Observable<Board> {
@@ -30,8 +34,9 @@ export class UpdateBoardComponent implements OnInit, OnDestroy {
   }
 
   updateBoard(): void {
-    this.board.date = Date.now();
-    this.subscriptions.push(this.boardService.updateBoard(this.board).subscribe(() => this.goBack()));
+    this.changeBoard.subject = this.board.result.subject;
+    this.changeBoard.content = this.board.result.content;
+    this.subscriptions.push(this.boardService.updateBoard(this.changeBoard, this.id).subscribe(() => this.goBack()));
   }
 
   goBack(): void {

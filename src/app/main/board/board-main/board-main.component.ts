@@ -9,6 +9,9 @@ import {Language} from '../../shared/language';
 import {PagerService} from '../shared/pager.service';
 import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 
+import {BoardmenuService} from '../shared/boardmenu.service';
+import {ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-board-main',
   templateUrl: './board-main.component.html',
@@ -16,7 +19,7 @@ import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 })
 export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
-  boards: Board[];
+  boards: any[];
   currentPage = 1;
 
   displayedColumns: string[] = ['id', 'subject', 'date', 'delete'];
@@ -27,26 +30,24 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   pager: any = {};
   pagedItems: Board[];
 
+  boardmenus: any = {};
 
   constructor(private boardService: BoardService,
               private mainService: MainService,
               private pagerService: PagerService,
+              private boardmenuService: BoardmenuService,
+              private route: ActivatedRoute,
               public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getLanguagelist();
-    this.subscriptions.push(this.mainService.getLanguage().subscribe(
-      language => this.language = this.languages.find((value) => value.id === language)));
+    this.boardmenus = this.route.snapshot.data['boardmenu'];
     this.subscriptions.push(this.readBoards()
       .subscribe(boards => {
-        this.boards = boards.sort((a, b) => b.date - a.date);
+        console.log(boards);
+        this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
         this.setPage(this.currentPage);
       }));
-  }
-
-  getLanguagelist(): void {
-    this.mainService.getLanguagelist().subscribe(languages => this.languages = languages);
   }
 
   readBoards() {

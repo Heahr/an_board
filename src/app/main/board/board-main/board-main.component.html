@@ -1,6 +1,6 @@
 <div class="board--main--button--group">
   <button mat-raised-button routerLink="/main/create" [routerLinkActiveOptions]="{ exact: true }"
-          routerLinkActive="active" mat-button>추가</button>
+          routerLinkActive="active" mat-button>{{boardmenus.result.BORAD_CREATE}}</button>
 </div>
 <div class="board--main">
   <div class="mat-elevation-z8">
@@ -8,22 +8,22 @@
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.no}} </td>
       </ng-container>
 
       <ng-container matColumnDef="subject">
-        <th mat-header-cell *matHeaderCellDef> Subject </th>
-        <td mat-cell class="pointer" *matCellDef="let element" routerLink="/main/update/{{element.id}}"> {{element.subject}} </td>
+        <th mat-header-cell *matHeaderCellDef> {{boardmenus.result.BOARD_CONTENT}} </th>
+        <td mat-cell class="pointer" *matCellDef="let element" routerLink="/main/update/{{element.key}}"> {{element.subject}} </td>
       </ng-container>
 
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.date |  date:'yyyy-MM-dd HH-mm:ss'}} </td>
+        <th mat-header-cell *matHeaderCellDef> {{boardmenus.result.BOARD_DATE}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.updatedDate}} </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <th mat-header-cell *matHeaderCellDef> {{boardmenus.result.BOARD_DELETE}} </th>
         <td mat-cell *matCellDef="let element">
           <button mat-raised-button (click)="openDialog(element)">Delete</button>
         </td>

@@ -20,6 +20,9 @@ import {DeleteBoardComponent} from './board/delete-board/delete-board.component'
 
 import {MainRoutingModule} from './main-routing.module';
 import {BoardModule} from './board/board.module';
+import {HttpClientModule} from '@angular/common/http';
+
+import {BoardmenuResolve} from './board/shared/boardmenu.resolve';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import {BoardModule} from './board/board.module';
     MatTabsModule,
     MatDividerModule,
     MatSelectModule,
+    HttpClientModule,
   ],
   exports: [
     MatButtonModule,
@@ -62,6 +66,9 @@ import {BoardModule} from './board/board.module';
   ],
   entryComponents: [
     DeleteBoardComponent
+  ],
+  providers: [
+    BoardmenuResolve,
   ]
 })
 export class MainModule {

@@ -27,13 +27,13 @@ export class MainHomeComponent implements OnInit {
   ngOnInit() {
     this.data = this.route.snapshot.data;
     this.sendLanguage(this.nation);
-    this.getLanguagelist();
+    //this.getLanguagelist();
     this.loginService.getLoginid().subscribe(id => this.id = id);
   }
 
-  getLanguagelist(): void {
-    this.mainService.getLanguagelist().subscribe(Languages => this.Languages = Languages);
-  }
+  // getLanguagelist(): void {
+  //   this.mainService.getLanguagelist().subscribe(Languages => this.Languages = Languages);
+  // }
 
   sendLanguage(nation: string): void {
     setTimeout(() => {this.mainService.sendLanguage(nation); }, 600);

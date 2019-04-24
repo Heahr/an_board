@@ -9,7 +9,7 @@ import {Language} from './language';
 })
 export class MainService {
   private subject = new Subject<string>();
-  private languageUrl = 'http://localhost:3000/language';
+  //private languageUrl = 'http://localhost:3000/language';
 
   constructor(private http: HttpClient) {
   }
@@ -18,9 +18,9 @@ export class MainService {
     return this.subject.asObservable();
   }
 
-  getLanguagelist(): Observable<Language[]> {
-    return this.http.get<Language[]>(this.languageUrl);
-  }
+  // getLanguagelist(): Observable<Language[]> {
+  //   return this.http.get<Language[]>(this.languageUrl);
+  // }
 
   sendLanguage(language: string) {
     return this.subject.next(language);
