@@ -1,27 +1,6 @@
-# Board
+19/04/24
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+in memory db로 하려고 했으나 다시 변경해주셧음.
+서버에 올라가있는 상태에서 하며, 아이디 마다 access token이 주어지며 그것을 가지고 게시판 내용과 다른곳의 접근이 가능함.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+구성은 update, load(일단 정해진 갯수만) 가능한 상태.
