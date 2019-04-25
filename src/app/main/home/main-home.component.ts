@@ -5,6 +5,7 @@ import {Language} from '../shared/language';
 import {LoginService} from '../../login/shared/login.service';
 
 import {ActivatedRoute} from '@angular/router';
+import {MainMenuService} from '../shared/mainmenu.service';
 
 @Component({
   selector: 'app-main',
@@ -14,20 +15,28 @@ import {ActivatedRoute} from '@angular/router';
 export class MainHomeComponent implements OnInit {
   nation: string = navigator.language.substr(0, 2);
 
-  Languages: Language[];
   id: string = '';
 
   data: any;
 
+  Labels: any = {
+    BOARD_TITLE: '',
+    BOARD_LOGOUT: ''
+  };
+
   constructor(private mainService: MainService,
               private loginService: LoginService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+  private mainMenuService: MainMenuService) {
   }
 
   ngOnInit() {
+    this.mainMenuService.readMainMenu(Object.keys(this.Labels).join(','))
+      .subscribe(res => {
+        this.Labels = res.result;
+      });
     this.data = this.route.snapshot.data;
     this.sendLanguage(this.nation);
-    //this.getLanguagelist();
     this.loginService.getLoginid().subscribe(id => this.id = id);
   }
 
@@ -36,7 +45,9 @@ export class MainHomeComponent implements OnInit {
   // }
 
   sendLanguage(nation: string): void {
-    setTimeout(() => {this.mainService.sendLanguage(nation); }, 600);
+    setTimeout(() => {
+      this.mainService.sendLanguage(nation);
+    }, 600);
   }
 
 }

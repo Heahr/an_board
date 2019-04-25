@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Subscription} from 'rxjs/index';
 
-import {Board} from '../shared/board';
+import {Updateboard} from '../shared/updateboard';
 import {BoardService} from '../shared/board.service';
 
 @Component({
@@ -11,7 +11,7 @@ import {BoardService} from '../shared/board.service';
   styleUrls: ['./create-board.component.css']
 })
 export class CreateBoardComponent implements OnInit, OnDestroy {
-  board: Board = {} as Board;
+  createboard: Updateboard = {} as Updateboard;
   private subscriptions: Subscription[] = [];
 
   constructor(private boardService: BoardService,
@@ -22,8 +22,7 @@ export class CreateBoardComponent implements OnInit, OnDestroy {
   }
 
   createBoard(): void {
-    this.board.date = Date.now();
-    this.subscriptions.push(this.boardService.createBoard(this.board).subscribe(() => this.goBack()));
+    this.subscriptions.push(this.boardService.createBoard(this.createboard).subscribe(() => this.goBack()));
   }
 
   onSubmit() {

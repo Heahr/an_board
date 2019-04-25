@@ -1,7 +1,7 @@
 <mat-card class="example--card">
   <div class="register--main--title">
     <mat-card-header>
-      <mat-card-title> Sign Up</mat-card-title>
+      <mat-card-title>{{registermenus.SIGN_UP_TITLE}}</mat-card-title>
     </mat-card-header>
   </div>
   <div class="register--language--button">
@@ -15,23 +15,23 @@
     <mat-card-content>
       <form class="example-form" [formGroup]="userForm">
         <mat-form-field class="example-full-width">
-          <input type="text" matInput placeholder="Login" formControlName="username">
-          <mat-hint>3글자 이상 입력하세요.</mat-hint>
-          <mat-error>정확하게 입력하세요.</mat-error>
+          <input type="text" matInput placeholder="{{registermenus.SIGN_UP_ID}}" formControlName="username">
+          <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
+          <mat-error>{{registermenus.MEMBER_DUPLICATED_ID}}</mat-error>
         </mat-form-field>
         <br/>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password" type="password" formControlName="password">
-          <mat-hint>패스워드를 입력하세요.</mat-hint>
-          <mat-error>정확하게 입력하세요.</mat-error>
+          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD}}" type="password" formControlName="password">
+          <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
+          <mat-error>{{registermenus.PASSWORD_INVALID}}</mat-error>
 
         </mat-form-field>
         <br/>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password Confirm" type="password" formControlName="verifyPassword"
+          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD_CONFIRM}}" type="password" formControlName="verifyPassword"
                  [errorStateMatcher]="errorMatcher">
-          <mat-hint>한번 더 입력하세요.</mat-hint>
-          <mat-error *ngIf="userForm.hasError('passwordsDoNotMatch')">똑같지 않습니다.</mat-error>
+          <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
+          <mat-error *ngIf="userForm.hasError('passwordsDoNotMatch')">{{registermenus.WARNING_COLLECT}}</mat-error>
         </mat-form-field>
         <br/>
       </form>
@@ -39,8 +39,8 @@
   </div>
   <div class="register--main--button">
     <mat-card-actions>
-      <button mat-button routerLink="/login">Cancel</button>
-      <button mat-button routerLink="/login">Save</button>
+      <button mat-button routerLink="/login">{{registermenus.BUTTON_CANCEL}}</button>
+      <button mat-button routerLink="/login">{{registermenus.BUTTON_SAVE}}</button>
     </mat-card-actions>
   </div>
 </mat-card>

@@ -1,16 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {Subscription} from 'rxjs/index';
-
-import {Board} from '../shared/board';
 import {BoardService} from '../shared/board.service';
-import {MainService} from '../../shared/main.service';
 import {Language} from '../../shared/language';
 import {PagerService} from '../shared/pager.service';
 import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 
-import {BoardmenuService} from '../shared/boardmenu.service';
-import {ActivatedRoute} from '@angular/router';
+import {BoardMenuService} from '../shared/boardmenu.service';
 
 @Component({
   selector: 'app-board-main',
@@ -20,32 +16,40 @@ import {ActivatedRoute} from '@angular/router';
 export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   boards: any[];
-  currentPage = 1;
 
   displayedColumns: string[] = ['id', 'subject', 'date', 'delete'];
   language: Language = {} as Language;
-  languages: Language[];
-
   pageslice = 10;
-  pager: any = {};
-  pagedItems: Board[];
+  currentPage = 1;
+  totalpage: number;
 
-  boardmenus: any = {};
+  pager: any = {};
+
+  Labels: any = {
+    BOARD_CONTENT: '',
+    BOARD_DELETE: '',
+    BOARD_TITLE: '',
+    BOARD_DATE: '',
+    BORAD_CREATE: '',
+    BOARD_SUBJECT: '',
+    BOARD_LOGOUT: ''
+  };
 
   constructor(private boardService: BoardService,
-              private mainService: MainService,
               private pagerService: PagerService,
-              private boardmenuService: BoardmenuService,
-              private route: ActivatedRoute,
+              private boardMenuService: BoardMenuService,
               public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.boardmenus = this.route.snapshot.data['boardmenu'];
+    this.boardMenuService.readBoardMenu(Object.keys(this.Labels).join(','))
+      .subscribe(res => {
+        this.Labels = res.result;
+      });
     this.subscriptions.push(this.readBoards()
       .subscribe(boards => {
-        console.log(boards);
         this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
+        this.totalpage = boards.result.totalElements;
         this.setPage(this.currentPage);
       }));
   }
@@ -54,23 +58,25 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     return this.boardService.readBoards();
   }
 
-  deleteBoard(board: Board): any {
-    return this.subscriptions.push(this.boardService.deleteBoard(board).subscribe(() => {
-      this.readBoards().subscribe(boards => {
-        this.boards = boards.sort((a, b) => b.date - a.date);
-        this.setPage(this.currentPage);
-      });
-    }));
+  deleteBoard(key: number) {
+    return this.boardService.deleteBoard(key);
+    // return this.subscriptions.push(this.boardService.deleteBoard(key).subscribe(() => {
+    //   this.readBoards().subscribe(boards => {
+    //     this.boards = boards.sort((a, b) => b.date - a.date);
+    //     this.setPage(this.currentPage);
+    //   });
+    // }));
   }
 
-  openDialog(board: Board): void {
+  openDialog(key: number): void {
     const dialogRef = this.dialog.open(DeleteBoardComponent, {
       width: '300px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.deleteBoard(board);
+        console.log(key);
+        this.deleteBoard(key);
       }
     });
   }
@@ -78,8 +84,10 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   setPage(page: number, slice: number = 10) {
     this.pageslice = slice;
     this.currentPage = page;
-    this.pager = this.pagerService.getPager(this.boards.length, page, slice);
-    this.pagedItems = this.boards.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pager = this.pagerService.getPager(this.totalpage, page, slice);
+    this.boardService.slicereadBoards(page - 1, slice).subscribe(boards => {
+      this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
+    });
   }
 
   ngOnDestroy(): void {

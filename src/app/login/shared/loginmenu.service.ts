@@ -11,14 +11,14 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class BoardMenuService {
-  private boardMenuUrl = 'https://13.124.52.53:8080/i18ns/entry?i18nIds='
+export class LoginMenuService {
+  private loginmenuUrl = 'https://13.124.52.53:8080/i18ns/entry?';
 
   constructor(private http: HttpClient) {
   }
 
-  readBoardMenu(param: string): Observable<any> {
-    const url = `${this.boardMenuUrl}` + `${param}`;
+  readLoginMenu(param: string): Observable<any> {
+    const url = `${this.loginmenuUrl}` + `${param}`
     return this.http.get<any>(url, httpOptions);
   }
 }

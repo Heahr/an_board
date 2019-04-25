@@ -7,7 +7,6 @@ import {LoginMainComponent} from './main/login-main.component';
 import {RegisterComponent} from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     LoginMainComponent,
@@ -28,6 +27,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+  ],
+  providers: [
   ]
 })
 export class LoginModule {

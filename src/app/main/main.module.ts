@@ -22,8 +22,6 @@ import {MainRoutingModule} from './main-routing.module';
 import {BoardModule} from './board/board.module';
 import {HttpClientModule} from '@angular/common/http';
 
-import {BoardmenuResolve} from './board/shared/boardmenu.resolve';
-
 @NgModule({
   declarations: [
     MainHomeComponent,
@@ -68,7 +66,6 @@ import {BoardmenuResolve} from './board/shared/boardmenu.resolve';
     DeleteBoardComponent
   ],
   providers: [
-    BoardmenuResolve,
   ]
 })
 export class MainModule {

@@ -11,10 +11,10 @@ const httpOptions = {
       'accept-language': 'ko',
       Accept: 'application/json',
       'content-type': 'application/json',
-      Authorization: 'Bearer eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..EeXo8cT-viOUkbcP.bZ0UUw6mENfR2z62YUl' +
-      'qGIswOZM0udxk54baY4pgFZSTs4cCgsHhNZrnUMn_HBgoledYpYNc5sE2YA1eZ084CL61gl05oMsEdQF2qBLJj-TNAvtegep3CkEA-Ftz4IlslWFOrN' +
-      'ewdDZdZpBTqVk2XIyxBbhax7Edl1K795VlF0Qbia1jXjOMcZx_u09o4Cj0koBmrpjAyhGUwuUoUyBeQ7r-BE28IBstAzBtp3C5j6UQUQyWCm358yO60' +
-      'q_sXNCj.6t3JetPiuRzJKWUbqGxu3A'
+      Authorization: 'Bearer eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..PPLXvRgQkCoR3WIm.wcB_rre_QwoTY_pdO' +
+      '-0sW_epq21air-BtFN66ysO_wp99qOrmwuQf0we8jpO5Xg6X04cVM125MLTSFQMND_gF8V9iPYLWtodB5Amw0ESP4wOhefA1xq-rAXlittkn9On-6' +
+      '0jYiShwRolJ-W_Orifz09bCUYqwaWsMAQ-CNecUxEe2mcKj4WK_c01TVmusViOrs6fOJtnHxJaZhNhe63LoSZ58F7plDp_348Oy5zn8T_lrlVsL9F' +
+      'QJbkCQcgVTaxb.Ilp3IiwAmL4hb1W6oOx5AA'
     }
   )
 };
@@ -30,12 +30,13 @@ export class BoardService {
   constructor(private http: HttpClient) {
   }
 
-  createBoard(board: Board): Observable<any> {
+  createBoard(board: Updateboard): Observable<any> {
     return this.http.post<any>(this.boardUrl, board, httpOptions);
   }
 
-  slicereadBoards(page: number, size: number) {
+  slicereadBoards(page: number, size: number): Observable<any> {
     const url = this.boardUrl + '?page=' + `${page}` + '&size=' + `${size}`;
+    console.log(url);
     return this.http.get<any>(url, httpOptions);
   }
 
@@ -52,11 +53,11 @@ export class BoardService {
     return this.http.put(this.boardUrl + `/${key}`, board, httpOptions);
   }
 
-  deleteBoard(board: Board | number): Observable<Board> {
-    const id = typeof board === 'number' ? board : board.id;
-    const url = `${this.boardUrl}/${id}`;
+  deleteBoard(key: number): Observable<any> {
+    const url = `${this.boardUrl}/${key}` + '?reason=for delete';
+    console.log(url);
 
-    return this.http.delete<Board>(url, httpOptions);
+    return this.http.delete<any>(url, httpOptions);
   }
 }
 

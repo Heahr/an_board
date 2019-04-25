@@ -7,8 +7,6 @@ import {CreateBoardComponent} from './board/create-board/create-board.component'
 import {ReadBoardComponent} from './board/read-board/read-board.component';
 import {UpdateBoardComponent} from './board/update-board/update-board.component';
 
-import {BoardmenuResolve} from './board/shared/boardmenu.resolve';
-
 const routes: Routes = [
   {path: 'main', redirectTo: 'main/board', pathMatch: 'full'},
   {
@@ -18,7 +16,7 @@ const routes: Routes = [
       {path: 'create', component: CreateBoardComponent},
       {path: 'read/:id', component: ReadBoardComponent},
       {path: 'update/:id', component: UpdateBoardComponent},
-      {path: 'board', component: BoardMainComponent, resolve: {boardmenu: BoardmenuResolve}}
+      {path: 'board', component: BoardMainComponent,}
     ]
   }
 ];

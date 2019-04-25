@@ -1,13 +1,13 @@
 <div class="board--create">
   <form class="example-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Subject" class="create--input" [(ngModel)]="board.subject" name="subject" #subject="ngModel" minlength="3" required/>
+      <input matInput placeholder="Subject" class="create--input" [(ngModel)]="createboard.subject" name="subject" #subject="ngModel" minlength="3" required/>
       <mat-hint>제목을 입력하세요.</mat-hint>
       <mat-error>3글자 이상 입력하세요.</mat-error>
       <br/>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Content" class="create--input" [(ngModel)]="board.message" name="message" #message="ngModel" minlength="5" rows="10"
+      <textarea matInput placeholder="Content" class="create--input" [(ngModel)]="createboard.content" name="message" #message="ngModel" minlength="5" rows="10"
                 [errorStateMatcher]="matcher" required></textarea>
       <mat-hint>내용을 입력하세요.</mat-hint>
       <mat-error>5글자 이상 입력하세요.</mat-error>

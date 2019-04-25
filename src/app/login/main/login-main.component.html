@@ -3,7 +3,7 @@
     <div class="example--card">
       <div class="login--main---title">
         <mat-card-header>
-          <mat-card-title> Log  in </mat-card-title>
+          <mat-card-title>{{labels.LOGIN_TITLE}}</mat-card-title>
         </mat-card-header>
       </div>
       <div class="login--language--button">
@@ -16,14 +16,14 @@
       <mat-card-content>
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Login" #loginid value="">
-            <mat-hint>아이디 입력하세요.</mat-hint>
+            <input matInput placeholder="{{labels.LOGIN_ID}}" #loginid value="">
+            <mat-hint>{{labels.WARNING_CONTENT}}</mat-hint>
             <mat-error>정확하게 입력하세요.</mat-error>
           </mat-form-field>
           <br/>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" #loginpassword value="">
-            <mat-hint>비밀번호를 입력하세요.</mat-hint>
+            <input matInput placeholder="{{labels.LOGIN_PASSWORD}}" #loginpassword value="">
+            <mat-hint>{{labels.WARNING_CONTENT}}</mat-hint>
             <mat-error>정확하게 입력하세요.</mat-error>
           </mat-form-field>
           <br/>
@@ -31,8 +31,8 @@
       </mat-card-content>
       <div class="login--main--button">
         <mat-card-actions>
-          <button mat-raised-button routerLink="/register">Sign Up</button>
-          <button mat-raised-button routerLink="/main/board" (click)="setLoginid(loginid.value)">Login</button>
+          <button mat-raised-button routerLink="/register">{{labels.LOGIN_REGISTER}}</button>
+          <button mat-raised-button routerLink="/main/board" (click)="setLoginid(loginid.value)">{{labels.LOGIN_SIGN_IN}}</button>
         </mat-card-actions>
       </div>
     </div>

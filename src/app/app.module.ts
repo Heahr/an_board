@@ -28,7 +28,8 @@ import { ErrorComponent } from './error/error.component';
     MatCheckboxModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

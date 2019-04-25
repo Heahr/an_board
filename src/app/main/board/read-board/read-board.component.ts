@@ -29,9 +29,9 @@ export class ReadBoardComponent implements OnInit, OnDestroy {
     return this.boardService.readBoard(id);
   }
 
-  deleteBoard(board: Board): void {
-    this.subscriptions.push(this.boardService.deleteBoard(board).subscribe(() => this.goBack()));
-  }
+  // deleteBoard(board: Board): void {
+  //   this.subscriptions.push(this.boardService.deleteBoard(board).subscribe(() => this.goBack()));
+  // }
 
   goBack(): void {
     this.location.back();

@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BoardMenuService } from './boardmenu.service';
+import { MainMenuService } from './mainmenu.service';
 
-describe('BoardMenuService', () => {
+describe('MainMenuService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BoardMenuService = TestBed.get(BoardMenuService);
+    const service: MainMenuService = TestBed.get(MainMenuService);
     expect(service).toBeTruthy();
   });
 });
