@@ -24,6 +24,11 @@ export class MainHomeComponent implements OnInit {
     BOARD_LOGOUT: ''
   };
 
+  languages: any[] = [
+    {value: '한국어'},
+    {value: 'English'}
+  ];
+
   constructor(private mainService: MainService,
               private loginService: LoginService,
               private route: ActivatedRoute,

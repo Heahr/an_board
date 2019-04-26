@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {CrossFieldErrorMatcher} from '../shared/CrossFieldErrorMatcher';
 import {RegisterMenuService} from '../shared/registermenu.service';
+import {LanguageMenuService} from '../../global/shared/languagemenu.service';
 
 @Component({
   selector: 'app-register',
@@ -25,19 +26,32 @@ export class RegisterComponent implements OnInit {
     WARNING_CONTENT: ''
   };
 
+  languages: any[] = [
+    {value: 'ko'},
+    {value: 'en'}
+  ];
+
   userForm: FormGroup;
   errorMatcher = new CrossFieldErrorMatcher();
-  
+
   constructor(private fb: FormBuilder,
-              private registerMenuService: RegisterMenuService) {
+              private registerMenuService: RegisterMenuService,
+              private languageMenuService: LanguageMenuService) {
     this.initForm();
   }
 
   ngOnInit() {
-    this.registerMenuService.readRegisterMenu(Object.keys(this.registermenus).join(','))
-      .subscribe(res => {
-        this.registermenus = res.result;
-      });
+    this.languageMenuService.getLocale().subscribe(value =>
+      this.registerMenuService.readRegisterMenu(Object.keys(this.registermenus).join(','), value)
+        .subscribe(res => {
+          this.registermenus = res.result;
+        })
+    );
+    this.sendLocale('');
+  }
+
+  sendLocale(locale: string) {
+    this.languageMenuService.sendLocale(locale);
   }
 
   initForm() {

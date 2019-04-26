@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LanguagemenuService } from './languagemenu.service';
+import { LanguageMenuService } from './languagemenu.service';
 import {expect} from '@angular/platform-browser/testing/src/matchers';
 import {describe} from 'selenium-webdriver/testing';
 
-describe('LanguagemenuService', () => {
+describe('LanguageMenuService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: LanguagemenuService = TestBed.get(LanguagemenuService);
+    const service: LanguageMenuService = TestBed.get(LanguageMenuService);
     expect(service).toBeTruthy();
   });
 });

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../shared/login.service';
-import {ActivatedRoute} from '@angular/router';
 import {LoginMenuService} from '../shared/loginmenu.service';
+import {LanguageMenuService} from '../../global/shared/languagemenu.service';
 
 @Component({
   selector: 'app-login',
@@ -20,20 +20,37 @@ export class LoginMainComponent implements OnInit {
     REQUIRED_PARAMETER: ''
   };
 
+  languages: any[] = [
+    {value: 'ko'},
+    {value: 'en'}
+  ];
+
   constructor(private loginService: LoginService,
-              private loginMenuService: LoginMenuService) {
+              private loginMenuService: LoginMenuService,
+              private languageMenuService: LanguageMenuService) {
   }
 
   ngOnInit() {
-    this.loginMenuService.readLoginMenu(Object.keys(this.labels).join(','))
-      .subscribe(res => {
-        this.labels = res.result;
-      });
+    this.languageMenuService.getLocale().subscribe(value =>
+      this.loginMenuService.readLoginMenu(Object.keys(this.labels).join(','), value)
+        .subscribe(res => {
+          this.labels = res.result;
+        })
+    )
+    this.sendLocale('');
+  }
+
+  sendLocale(locale: string) {
+    this.languageMenuService.sendLocale(locale);
   }
 
   setLoginid(id: string): void {
     setTimeout(() => {
       this.loginService.setLoginid(id);
     }, 100);
+  }
+
+  test(value: string): void {
+    return console.log(value);
   }
 }

@@ -7,11 +7,14 @@
         </mat-card-header>
       </div>
       <div class="login--language--button">
-        <button mat-raised-button [matMenuTriggerFor]="menu">Language▼</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item >한글</button>
-          <button mat-menu-item >English</button>
-        </mat-menu>
+        <mat-form-field class="login--language--button--form">
+          <mat-label>Select language</mat-label>
+          <mat-select name="languages">
+            <mat-option *ngFor="let language of languages" [value]="language.value" (click)="sendLocale(language.value)">
+              {{language.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <mat-card-content>
         <form class="example-form">

@@ -1,11 +1,14 @@
 <div class="main--header">
   <div class="main--header--left">
     <button mat-button routerLink="/main/board">{{Labels.BOARD_TITLE}}</button>
-    <button mat-raised-button class="main--header--left--button" [matMenuTriggerFor]="menu">Language▼</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item >한글</button>
-      <button mat-menu-item >English</button>
-    </mat-menu>
+    <mat-form-field class="login--language--button--form">
+      <mat-label>Select language</mat-label>
+      <mat-select name="languages">
+        <mat-option *ngFor="let language of languages" [value]="language.value">
+          {{language.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div class="main--header--right">
     <span *ngIf="id">Hi :) {{id}} </span>

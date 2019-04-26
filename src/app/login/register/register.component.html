@@ -5,11 +5,14 @@
     </mat-card-header>
   </div>
   <div class="register--language--button">
-    <button mat-raised-button [matMenuTriggerFor]="menu">Language▼</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>한글</button>
-      <button mat-menu-item>English</button>
-    </mat-menu>
+    <mat-form-field class="login--language--button--form">
+      <mat-label>Select language</mat-label>
+      <mat-select name="languages">
+        <mat-option *ngFor="let language of languages" [value]="language.value" (click)="sendLocale(language.value)">
+          {{language.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <div class="register--main--input">
     <mat-card-content>
@@ -39,8 +42,8 @@
   </div>
   <div class="register--main--button">
     <mat-card-actions>
-      <button mat-button routerLink="/login">{{registermenus.BUTTON_CANCEL}}</button>
-      <button mat-button routerLink="/login">{{registermenus.BUTTON_SAVE}}</button>
+      <button mat-raised-button routerLink="/login">{{registermenus.BUTTON_CANCEL}}</button>
+      <button mat-raised-button routerLink="/login">{{registermenus.BUTTON_SAVE}}</button>
     </mat-card-actions>
   </div>
 </mat-card>

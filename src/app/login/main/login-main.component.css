@@ -31,3 +31,7 @@
   margin-top: 20px;
   text-align: right;
 }
+
+.login--language--button--form {
+  width: 135px;
+}
