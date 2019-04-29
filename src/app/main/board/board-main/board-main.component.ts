@@ -9,6 +9,7 @@ import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 import {BoardMenuService} from '../shared/boardmenu.service';
 import {LanguageMenuService} from '../../../global/shared/languagemenu.service';
 import {ActivatedRoute} from '@angular/router';
+import {LoginService} from '../../../login/shared/login.service';
 
 @Component({
   selector: 'app-board-main',
@@ -41,18 +42,25 @@ export class BoardMainComponent implements OnInit, OnDestroy {
               private pagerService: PagerService,
               private boardMenuService: BoardMenuService,
               private languageMenuService: LanguageMenuService,
-              private route: ActivatedRoute,
+              private loginService: LoginService,
               public dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this.loginService.getLoginid().subscribe(res => {
+      this.readBoards(res).subscribe(boards => {
+        this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
+        this.totalpage = boards.result.totalElements;
+        this.setPage(this.currentPage);
+      });
+    })
     this.languageMenuService.getLocale().subscribe(value =>
       this.boardMenuService.readBoardMenu(Object.keys(this.Labels).join(','), value)
         .subscribe(res => {
           this.Labels = res.result;
         })
     )
-    this.subscriptions.push(this.readBoards(this.route.snapshot.data['token'])
+    this.subscriptions.push(this.readBoards()
       .subscribe(boards => {
         this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
         this.totalpage = boards.result.totalElements;

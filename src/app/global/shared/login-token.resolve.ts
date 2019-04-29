@@ -9,7 +9,7 @@ export class LoginTokenResolve implements Resolve<any> {
   constructor(private loginService: LoginService) {
   }
 
-  resolve() {
+  resolve(id: any) {
     this.loginService.getLoginid().subscribe(res => this.token = res);
     console.log(this.token);
     return this.token;

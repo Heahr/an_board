@@ -35,10 +35,10 @@
       <div class="login--main--button">
         <mat-card-actions>
           <button mat-raised-button routerLink="/register">{{labels.LOGIN_REGISTER}}</button>
-          <button mat-raised-button routerLink="/main/board">{{labels.LOGIN_SIGN_IN}}</button>
+          <button mat-raised-button routerLink="/main/board" (click)="setToken(login)" >{{labels.LOGIN_SIGN_IN}}</button>
         </mat-card-actions>
       </div>
     </div>
   </mat-card>
 </div>
-<!-- (click)="setToken(login)" -->
+<!-- -->

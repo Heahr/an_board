@@ -30,8 +30,6 @@ export class LoginMainComponent implements OnInit {
     {locale: 'en', name: 'English'}
   ];
 
-  istest: any = [];
-
   constructor(private loginService: LoginService,
               private loginMenuService: LoginMenuService,
               private languageMenuService: LanguageMenuService) {
@@ -45,7 +43,6 @@ export class LoginMainComponent implements OnInit {
         })
     )
     this.sendLocale('');
-    this.loginService.getLoginid().subscribe(res => this.istest = res);
   }
 
   sendLocale(locale: string) {

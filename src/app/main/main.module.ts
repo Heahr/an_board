@@ -3,12 +3,20 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatDialogModule, MatDividerModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule, MatPaginatorModule, MatProgressSpinnerModule,
-  MatRippleModule, MatSelectModule, MatSortModule, MatTabGroup, MatTableModule, MatTabsModule
+  MatMenuModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule
 } from '@angular/material';
 
 import {MainHomeComponent} from './home/main-home.component';
@@ -21,7 +29,6 @@ import {DeleteBoardComponent} from './board/delete-board/delete-board.component'
 import {MainRoutingModule} from './main-routing.module';
 import {BoardModule} from './board/board.module';
 import {HttpClientModule} from '@angular/common/http';
-import {LoginTokenResolve} from '../global/shared/login-token.resolve';
 
 @NgModule({
   declarations: [
@@ -66,9 +73,7 @@ import {LoginTokenResolve} from '../global/shared/login-token.resolve';
   entryComponents: [
     DeleteBoardComponent
   ],
-  providers: [
-    LoginTokenResolve
-  ]
+  providers: []
 })
 export class MainModule {
 }

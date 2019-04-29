@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs/index';
-import {HttpHeaders, HttpClient} from '@angular/common/http';
-import {tap} from 'rxjs/internal/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders(

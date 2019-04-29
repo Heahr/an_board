@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-import {Board} from './board';
 import {Updateboard} from './updateboard';
 
 const httpOptions = {
@@ -21,8 +20,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class BoardService {
+export class BoardService{
   private boardUrl = 'https://13.124.52.53:8080/boards';
+  token = '';
 
   constructor(private http: HttpClient) {
   }
@@ -42,19 +42,23 @@ export class BoardService {
     return this.http.get<any>(url, httpOptions);
   }
 
-  readBoards(token: string): Observable<any> {
-    console.log(token);
-    const httpOption = {
-      headers: new HttpHeaders(
-        {
-          'accept-language': 'ko',
-          Accept: 'application/json',
-          'content-type': 'application/json',
-          Authorization: `${token}`
-        }
-      )
+  readBoards(token: string = ''): Observable<any> {
+    if (token !== '') {
+      console.log(token);
+      const httpOption = {
+        headers: new HttpHeaders(
+          {
+            'accept-language': 'ko',
+            Accept: 'application/json',
+            'content-type': 'application/json',
+            Authorization: `${this.token}`
+          }
+        )
+      }
+      return this.http.get<any>(this.boardUrl, httpOption);
+    } else {
+      return this.http.get<any>(this.boardUrl, httpOptions);
     }
-    return this.http.get<any>(this.boardUrl, httpOption);
   }
 
   updateBoard(board: Updateboard, key: number): Observable<any> {
