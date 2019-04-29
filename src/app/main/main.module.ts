@@ -21,6 +21,7 @@ import {DeleteBoardComponent} from './board/delete-board/delete-board.component'
 import {MainRoutingModule} from './main-routing.module';
 import {BoardModule} from './board/board.module';
 import {HttpClientModule} from '@angular/common/http';
+import {LoginTokenResolve} from '../global/shared/login-token.resolve';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {HttpClientModule} from '@angular/common/http';
     DeleteBoardComponent
   ],
   providers: [
+    LoginTokenResolve
   ]
 })
 export class MainModule {

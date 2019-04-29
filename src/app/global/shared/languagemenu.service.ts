@@ -24,7 +24,12 @@ export class LanguageMenuService {
   }
 
   sendLocale(locale: string) {
-    return this.subject.next(locale);
+    if (locale === '') {
+      return this.subject.next(this.locale);
+    } else {
+      this.locale = locale;
+      return this.subject.next(locale);
+    }
   }
 
   getLocales(): Observable<any> {

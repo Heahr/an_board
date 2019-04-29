@@ -20,10 +20,17 @@ export class LoginMainComponent implements OnInit {
     REQUIRED_PARAMETER: ''
   };
 
+  login: any = {
+    id: 'taesu',
+    password: 'password1!'
+  };
+
   languages: any[] = [
-    {value: 'ko'},
-    {value: 'en'}
+    {locale: 'ko', name: '한국어'},
+    {locale: 'en', name: 'English'}
   ];
+
+  istest: any = [];
 
   constructor(private loginService: LoginService,
               private loginMenuService: LoginMenuService,
@@ -38,19 +45,16 @@ export class LoginMainComponent implements OnInit {
         })
     )
     this.sendLocale('');
+    this.loginService.getLoginid().subscribe(res => this.istest = res);
   }
 
   sendLocale(locale: string) {
-    this.languageMenuService.sendLocale(locale);
+    return this.languageMenuService.sendLocale(locale);
   }
 
-  setLoginid(id: string): void {
-    setTimeout(() => {
-      this.loginService.setLoginid(id);
-    }, 100);
-  }
-
-  test(value: string): void {
-    return console.log(value);
+  setToken(login: any): void {
+    this.loginService.setToken(login).subscribe(res => {
+      this.loginService.setLoginid(res.result.accessToken);
+    });
   }
 }

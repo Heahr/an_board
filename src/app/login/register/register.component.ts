@@ -27,8 +27,8 @@ export class RegisterComponent implements OnInit {
   };
 
   languages: any[] = [
-    {value: 'ko'},
-    {value: 'en'}
+    {locale: 'ko', name: '한국어'},
+    {locale: 'en', name: 'English'}
   ];
 
   userForm: FormGroup;
@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit {
   }
 
   sendLocale(locale: string) {
-    this.languageMenuService.sendLocale(locale);
+    return this.languageMenuService.sendLocale(locale);
+
   }
 
   initForm() {

@@ -9,6 +9,7 @@ import {LoginRoutingModule} from './login-routing.module';
 import {LoginMainComponent} from './main/login-main.component';
 import {RegisterComponent} from './register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoginTokenResolve} from '../global/shared/login-token.resolve';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
   ],
   providers: [
+    LoginTokenResolve
   ]
 })
 export class LoginModule {

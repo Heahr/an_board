@@ -26,6 +26,10 @@ table {
   margin-bottom: 80px;
 }
 
+.board--main--delete {
+  float: left;
+}
+
 .fab {
   background-color: white;
   color: black;

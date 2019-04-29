@@ -8,8 +8,8 @@
     <mat-form-field class="login--language--button--form">
       <mat-label>Select language</mat-label>
       <mat-select name="languages">
-        <mat-option *ngFor="let language of languages" [value]="language.value" (click)="sendLocale(language.value)">
-          {{language.value}}
+        <mat-option *ngFor="let language of languages" [value]="language.locale" (click)="sendLocale(language.locale)">
+          {{language.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>

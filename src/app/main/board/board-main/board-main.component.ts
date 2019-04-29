@@ -7,6 +7,8 @@ import {PagerService} from '../shared/pager.service';
 import {DeleteBoardComponent} from '../delete-board/delete-board.component';
 
 import {BoardMenuService} from '../shared/boardmenu.service';
+import {LanguageMenuService} from '../../../global/shared/languagemenu.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-board-main',
@@ -17,7 +19,7 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   boards: any[];
 
-  displayedColumns: string[] = ['id', 'subject', 'date', 'delete'];
+  displayedColumns: string[] = ['id', 'subject', 'date', 'user', 'delete'];
   language: Language = {} as Language;
   pageslice = 10;
   currentPage = 1;
@@ -38,20 +40,29 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   constructor(private boardService: BoardService,
               private pagerService: PagerService,
               private boardMenuService: BoardMenuService,
+              private languageMenuService: LanguageMenuService,
+              private route: ActivatedRoute,
               public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.boardMenuService.readBoardMenu(Object.keys(this.Labels).join(','))
-      .subscribe(res => {
-        this.Labels = res.result;
-      });
-    this.subscriptions.push(this.readBoards()
+    this.languageMenuService.getLocale().subscribe(value =>
+      this.boardMenuService.readBoardMenu(Object.keys(this.Labels).join(','), value)
+        .subscribe(res => {
+          this.Labels = res.result;
+        })
+    )
+    this.subscriptions.push(this.readBoards(this.route.snapshot.data['token'])
       .subscribe(boards => {
         this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
         this.totalpage = boards.result.totalElements;
         this.setPage(this.currentPage);
       }));
+    this.sendLocale('');
+  }
+
+  sendLocale(locale: string) {
+    return this.languageMenuService.sendLocale(locale);
   }
 
   readBoards() {

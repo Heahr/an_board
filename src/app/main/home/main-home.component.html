@@ -1,11 +1,13 @@
 <div class="main--header">
   <div class="main--header--left">
-    <button mat-button routerLink="/main/board">{{Labels.BOARD_TITLE}}</button>
+    <span class="main--header--left--button">
+      <button mat-button routerLink="/main/board">{{Labels.BOARD_TITLE}}</button>
+    </span>
     <mat-form-field class="login--language--button--form">
       <mat-label>Select language</mat-label>
       <mat-select name="languages">
-        <mat-option *ngFor="let language of languages" [value]="language.value">
-          {{language.value}}
+        <mat-option *ngFor="let language of languages" [value]="language.locale" (click)="sendLocale(language.locale)">
+          {{language.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>

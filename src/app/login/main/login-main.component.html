@@ -10,8 +10,8 @@
         <mat-form-field class="login--language--button--form">
           <mat-label>Select language</mat-label>
           <mat-select name="languages">
-            <mat-option *ngFor="let language of languages" [value]="language.value" (click)="sendLocale(language.value)">
-              {{language.value}}
+            <mat-option *ngFor="let language of languages" [value]="language.locale" (click)="sendLocale(language.locale)">
+              {{language.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -19,13 +19,13 @@
       <mat-card-content>
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{labels.LOGIN_ID}}" #loginid value="">
+            <input matInput placeholder="{{labels.LOGIN_ID}}" [(ngModel)]="login.id" type="text" name="loginid">
             <mat-hint>{{labels.WARNING_CONTENT}}</mat-hint>
             <mat-error>정확하게 입력하세요.</mat-error>
           </mat-form-field>
           <br/>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{labels.LOGIN_PASSWORD}}" #loginpassword value="">
+            <input matInput placeholder="{{labels.LOGIN_PASSWORD}}" [(ngModel)]="login.password" type="password" name="loginpassword">
             <mat-hint>{{labels.WARNING_CONTENT}}</mat-hint>
             <mat-error>정확하게 입력하세요.</mat-error>
           </mat-form-field>
@@ -35,9 +35,10 @@
       <div class="login--main--button">
         <mat-card-actions>
           <button mat-raised-button routerLink="/register">{{labels.LOGIN_REGISTER}}</button>
-          <button mat-raised-button routerLink="/main/board" (click)="setLoginid(loginid.value)">{{labels.LOGIN_SIGN_IN}}</button>
+          <button mat-raised-button routerLink="/main/board">{{labels.LOGIN_SIGN_IN}}</button>
         </mat-card-actions>
       </div>
     </div>
   </mat-card>
 </div>
+<!-- (click)="setToken(login)" -->

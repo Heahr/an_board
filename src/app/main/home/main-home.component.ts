@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 import {MainService} from '../shared/main.service';
-import {Language} from '../shared/language';
 import {LoginService} from '../../login/shared/login.service';
 
 import {ActivatedRoute} from '@angular/router';
 import {MainMenuService} from '../shared/mainmenu.service';
+import {LanguageMenuService} from '../../global/shared/languagemenu.service';
 
 @Component({
   selector: 'app-main',
@@ -25,24 +25,32 @@ export class MainHomeComponent implements OnInit {
   };
 
   languages: any[] = [
-    {value: '한국어'},
-    {value: 'English'}
+    {locale: 'ko', name: '한국어'},
+    {locale: 'en', name: 'English'}
   ];
 
   constructor(private mainService: MainService,
               private loginService: LoginService,
               private route: ActivatedRoute,
-  private mainMenuService: MainMenuService) {
+              private mainMenuService: MainMenuService,
+              private languageMenuService: LanguageMenuService) {
   }
 
   ngOnInit() {
-    this.mainMenuService.readMainMenu(Object.keys(this.Labels).join(','))
-      .subscribe(res => {
-        this.Labels = res.result;
-      });
+    this.languageMenuService.getLocale().subscribe(value =>
+      this.mainMenuService.readMainMenu(Object.keys(this.Labels).join(','), value)
+        .subscribe(res => {
+          this.Labels = res.result;
+        })
+    )
     this.data = this.route.snapshot.data;
     this.sendLanguage(this.nation);
     this.loginService.getLoginid().subscribe(id => this.id = id);
+    this.sendLocale('');
+  }
+
+  sendLocale(locale: string) {
+    return this.languageMenuService.sendLocale(locale);
   }
 
   // getLanguagelist(): void {
