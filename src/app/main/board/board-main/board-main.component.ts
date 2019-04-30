@@ -60,7 +60,7 @@ export class BoardMainComponent implements OnInit, OnDestroy {
           this.Labels = res.result;
         })
     )
-    this.subscriptions.push(this.readBoards()
+    this.subscriptions.push(this.readBoards('')
       .subscribe(boards => {
         this.boards = boards.result.content.sort((a, b) => b.updatedDate - a.updatedDate);
         this.totalpage = boards.result.totalElements;
@@ -73,8 +73,8 @@ export class BoardMainComponent implements OnInit, OnDestroy {
     return this.languageMenuService.sendLocale(locale);
   }
 
-  readBoards() {
-    return this.boardService.readBoards();
+  readBoards(res: string) {
+    return this.boardService.readBoards(res);
   }
 
   deleteBoard(key: number) {

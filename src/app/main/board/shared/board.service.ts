@@ -10,7 +10,10 @@ const httpOptions = {
       'accept-language': 'ko',
       Accept: 'application/json',
       'content-type': 'application/json',
-      Authorization: 'Bearer eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..UsK8CxgoIEhrjwEp.h_0n1pkbBj5sMve73Ps9GQFfdRVQVyqMSZMMc4MWbCQlFwPl9FeMOf_xNhHhRNrIDKP0l6E-VHaSJrcy1-glNWZtt54cQaeip20o__653hmgb_bcdhXS4XO6g7xErGXOOW2uK_ZTxJ7oiNzBckZgSQ6bL7aufZiVAqfyphDn-iDs2Fa4j51TAT8xOqzs1dZNa2Jb6lot6oN6VMjJOtbSkz3ujWPjliK3jhVb32M8UU6oKEgFddJ4489Mv9WZo81q.LxovC4LCPMd2Cn0TOetuWw'
+      Authorization: 'Bearer eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..FiQ7q81DiHUzw8dU.cZaKs0yYKiRYDX2zj' +
+      'FWdkQ5gwN193vbouq7Ppy_VY-Ejz9nQEaBQzoNiYk8JkvxZvGFzYZeUxc3zTRlPhNN-4SNQu_Ci5Gj6-orfCXe65rWvHjKn6V2qJdrj8to6I_lLgn' +
+      'bXrCPQQcmRQY-Wodqb4bXbpPHWfHt4SIr9KExH_oKRcPu4BjP30vurrxMSZRtHG1rq5COyJ9Ighqg7rRp-OuTYhgVbDxbgqXku87rYeRvB7LUDRG2' +
+      'IWCIz_qxceDQB.XCifPRi2HK8H8QOfpzoW8w'
     }
   )
 };
@@ -42,16 +45,15 @@ export class BoardService{
     return this.http.get<any>(url, httpOptions);
   }
 
-  readBoards(token: string = ''): Observable<any> {
+  readBoards(token: string): Observable<any> {
     if (token !== '') {
-      console.log(token);
       const httpOption = {
         headers: new HttpHeaders(
           {
             'accept-language': 'ko',
             Accept: 'application/json',
             'content-type': 'application/json',
-            Authorization: `${this.token}`
+            Authorization: `${token}`
           }
         )
       }
