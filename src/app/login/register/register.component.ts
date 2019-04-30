@@ -31,6 +31,13 @@ export class RegisterComponent implements OnInit {
     {locale: 'en', name: 'English'}
   ];
 
+  registerform = {
+    id: '',
+    name: '',
+    password: '',
+    passwordConfirm: ''
+  }
+
   userForm: FormGroup;
   errorMatcher = new CrossFieldErrorMatcher();
 
@@ -57,17 +64,22 @@ export class RegisterComponent implements OnInit {
 
   initForm() {
     this.userForm = this.fb.group({
-      username: '',
+      id: '',
+      name: '',
       password: '',
-      verifyPassword: ''
+      passwordConfirm: ''
     }, {
       validator: this.passwordValidator
     });
   }
 
   passwordValidator(form: FormGroup) {
-    const condition = form.get('password').value !== form.get('verifyPassword').value;
+    const condition = form.get('password').value !== form.get('passwordConfirm').value;
 
     return condition ? {passwordsDoNotMatch: true} : null;
+  }
+
+  test() {
+    console.log(this.registerform);
   }
 }

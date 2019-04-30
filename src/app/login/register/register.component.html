@@ -18,21 +18,27 @@
     <mat-card-content>
       <form class="example-form" [formGroup]="userForm">
         <mat-form-field class="example-full-width">
-          <input type="text" matInput placeholder="{{registermenus.SIGN_UP_ID}}" formControlName="username">
+          <input type="text" matInput placeholder="{{registermenus.SIGN_UP_ID}}" formControlName="id" [(ngModel)]="registerform.id">
           <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
           <mat-error>{{registermenus.MEMBER_DUPLICATED_ID}}</mat-error>
         </mat-form-field>
         <br/>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD}}" type="password" formControlName="password">
+          <input type="text" matInput placeholder="name"  formControlName="name" [(ngModel)]="registerform.name">
           <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
-          <mat-error>{{registermenus.PASSWORD_INVALID}}</mat-error>
-
+          <!--placeholder="{{registermenus.SIGN_UP_ID}}"-->
+          <!--<mat-error>{{registermenus.MEMBER_DUPLICATED_ID}}</mat-error>-->
         </mat-form-field>
         <br/>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD_CONFIRM}}" type="password" formControlName="verifyPassword"
-                 [errorStateMatcher]="errorMatcher">
+          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD}}" type="password" formControlName="password" [(ngModel)]="registerform.password">
+          <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
+          <mat-error>{{registermenus.PASSWORD_INVALID}}</mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{registermenus.SIGN_UP_PASSWORD_CONFIRM}}" type="password" formControlName="passwordConfirm"
+                 [errorStateMatcher]="errorMatcher" [(ngModel)]="registerform.passwordConfirm">
           <mat-hint>{{registermenus.WARNING_CONTENT}}</mat-hint>
           <mat-error *ngIf="userForm.hasError('passwordsDoNotMatch')">{{registermenus.WARNING_COLLECT}}</mat-error>
         </mat-form-field>

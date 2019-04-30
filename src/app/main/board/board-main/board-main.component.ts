@@ -78,6 +78,7 @@ export class BoardMainComponent implements OnInit, OnDestroy {
   }
 
   deleteBoard(key: number) {
+    console.log(key);
     return this.boardService.deleteBoard(key);
     // return this.subscriptions.push(this.boardService.deleteBoard(key).subscribe(() => {
     //   this.readBoards().subscribe(boards => {
